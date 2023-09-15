@@ -2,7 +2,7 @@
 Pyska-API is a Discord Bot
 This version doesn't have all the features the original Pyska-API Bot had because I don't want anyone to skid off it
 
-##Commands
+## Commands
 - /help
 - /pyskapicture (sends a picture of aiek's cat)
 - /pyskavideo (sends a video of aiek's cat)
