@@ -5,5 +5,6 @@ Pyska-API Open Source Discord Bot has 5 commands :
 /help, /pyskapicture (-sends a picture of aiek's cat), /pyskavideo (-sends a video of aiek's cat), /chatgpt (-chatgpt no way!!!), /about (-gives credits)
 
 Credits :
-Aiek - OWNER
-RoboM101 - Contribuitor
+OWNER=Aiek
+
+CONTRIBUITOR=RoboM101
