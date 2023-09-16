@@ -1,7 +1,7 @@
 # Pyska-API
 Pyska-API is a Discord Bot
 
-This version doesn't have all the features the original Pyska-API Bot had because I don't want anyone to skid off it (and also because if u wanna make your own Pyska-API, at the very least you would be a bit original and add your commands)
+This version doesn't have all the features the original Pyska-API Bot had because you're supposed to be original yk? (and also because if u wanna make your own Pyska-API, at the very least you would be a bit original and add your commands)
 
 ## Commands
 - /help
