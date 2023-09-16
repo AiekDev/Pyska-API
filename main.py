@@ -50,7 +50,7 @@ async def chatgpt(ctx, message):
     await ctx.send(f"`Command used: /chatgpt`\n**User Input**:\n{message}\n**Result: ** {result}\n")
 
 
-goofy4 = '''**Pyska-API has 5 commands, here is what they all do :**
+help = '''**Pyska-API has 5 commands, here is what they all do :**
 ```/help - Says all the 5 commands that can be used with PyskaAPI
 /pyskavideo - sends a video of pyska
 /pyskapicture - sends a pyska pic :3 
@@ -67,7 +67,7 @@ async def pyskapicture(ctx):
 
 @bot.command()
 async def help(ctx):
-    await ctx.respond(goofy4)
+    await ctx.respond(help)
 
 @bot.command()
 async def pyskavideo(ctx):
