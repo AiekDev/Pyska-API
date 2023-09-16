@@ -12,5 +12,6 @@ This version doesn't have all the features the original Pyska-API Bot had becaus
 ## Credits:
 - Aiek (Owner)
 - RoboM101 (Contributor)
+- CozmoDev (Thanks for the README!!!)
 
 > pizda2503 isnt a contributor btw i just added him by mistake fr fr
