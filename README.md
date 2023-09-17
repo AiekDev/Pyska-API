@@ -4,12 +4,12 @@ Pyska-API is a Discord Bot
 This version doesn't have all the features the original Pyska-API Bot had because you're supposed to be original yk? (and also because if u wanna make your own Pyska-API, at the very least you would be a bit original and add your commands)
 
 ## Commands
-# FOR MODERATION
+**FOR MODERATION**
 /ban - Requirement : Ban permission/Administrator
 /kick - Requirement : Kick permission
 /purge (deletes messages) - Requirement : Manage Messages permission
 NOTE : For Pyska-API to execute the moderation commands, Administrator permissions are needed, otherwise, these commands won't work!!!
- # FOR FUN
+ **FOR FUN**
 - /help - Says all the 17 commands that can be used with Pyska-API
 - /pyskavideo - Sends a video of pyska
 - /pyskapicture - Sends a pyska pic :3
