@@ -254,7 +254,7 @@ async def on_ready():
 
 
 
-# these messages were too long so i made them strings (you can always change them if u want to)
+# ignore these, you can remove them lol
 
 goofy = '''The Pyska API: Empowering Automation
 
