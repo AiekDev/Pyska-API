@@ -1,8 +1,5 @@
 # Pyska-API
-Pyska-API is a Discord Bot
-
-This version doesn't have all the features the original Pyska-API Bot had because you're supposed to be original yk? (and also because if u wanna make your own Pyska-API, at the very least you would be a bit original and add your commands)
-
+Pyska-API is a Discord Bot that can be used for moderation and to play around with
 ## Commands
 **FOR MODERATION**
 
