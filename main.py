@@ -21,6 +21,9 @@ bot = discord.Bot()
 os.environ['OPENAI_API_KEY'] = 'addyourownopenaikeyhereforpyskagptandchatgptcommandstowork!'
 # it is recommended to not remove imports!
 
+# very needed comment
+
+
 # moderation commands
 # moderation commands
 # moderation commands
