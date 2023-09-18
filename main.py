@@ -15,12 +15,15 @@ from langchain.prompts import (
 )
 from discord.ext import commands
 from langchain.chains import LLMChain
+from dotenv import load_dotenv
 # it is recommended to not remove imports!
 bot = discord.Bot()
 # it is recommended to not remove imports!
-os.environ['OPENAI_API_KEY'] = 'addyourownopenaikeyhereforpyskagptandchatgptcommandstowork!'
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
 # it is recommended to not remove imports!
 
+
 # moderation commands
 # moderation commands
 # moderation commands
@@ -29,12 +32,9 @@ os.environ['OPENAI_API_KEY'] = 'addyourownopenaikeyhereforpyskagptandchatgptcomm
 # moderation commands
 # moderation commands
 
+
 # purge messages
-# purge messages
-# purge messages
-# purge messages
-# purge messages
-# purge messages
+
 @bot.command()
 async def purge(ctx, amount: int):
     # Check if the user has permission to manage messages
@@ -46,50 +46,48 @@ async def purge(ctx, amount: int):
             await ctx.send("Operation cannot be completed : No **Manage Messages** permissions!")
     else:
         await ctx.send("**You don't have permission to use this command!**")
+
+
 # ban
-# ban
-# ban
-# ban
-# ban
-# ban
+
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, user: commands.UserConverter, *, reason="No reason provided"):
     try:
-        await ctx.guild.ban(user, reason=reason)
-        # Sends a DM to the banned user
         await user.send(f"You have been banned from {ctx.guild.name} for the following reason: {reason}")
+        # Sends a DM to the banned user
+        await ctx.guild.ban(user, reason=reason)
         # Send a confirmation message in the server
         await ctx.send(f"{user.mention} has been banned for the reason: {reason}")
+        
     except commands.MissingPermissions:
         await ctx.send("You don't have permission to ban users.")
+        
     except commands.BadArgument:
         await ctx.send("Invalid user provided.")
+        
     except Exception as e:
         await ctx.send(f"An error occurred: {e}")
+
+
 # kick
-# kick
-# kick
-# kick
-# kick
-# kick
-# kick
-# kick
-# kick
-# kick
+
 @bot.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, user: commands.UserConverter, reason="No reason provided"):
     try:
-        await ctx.guild.kick(user, reason=reason)
-        # Sends a DM to the kicked user
         await user.send(f"You have been kicked from {ctx.guild.name} for the following reason: {reason}")
         # Sends a confirmation message in the server
+        await ctx.guild.kick(user, reason=reason)
+        # Sends a DM to the kicked user
         await ctx.send(f"{user.mention} has been kicked for the reason: {reason}")
+        
     except commands.MissingPermissions:
         await ctx.send("You don't have permission to kick users.")
+        
     except commands.BadArgument:
         await ctx.send("Invalid user provided.")
+        
     except Exception as e:
         await ctx.send(f"An error occurred: {e}")
 
@@ -104,8 +102,6 @@ async def kick(ctx, user: commands.UserConverter, reason="No reason provided"):
 # non-moderation/for fun
 # non-moderation/for fun
 
-# ai commands!!!
-# ai commands!!!
 # ai commands!!!
 
 # pyskagpt (acts like a dumb cat, you can always change this :  "You are Pyska. You are Aiek's cat. Respond concisely and only use LolCat english." to your peference!
@@ -119,28 +115,20 @@ async def pyskagpt(ctx, message):
             SystemMessagePromptTemplate.from_template(
                 "You are Pyska. You are Aiek's cat. Respond concisely and only use LolCat english."
             ),
-            # The `variable_name` here is what must align with memory
-            # MessagesPlaceholder(variable_name="chat_history"),
             HumanMessagePromptTemplate.from_template("{human}")
         ]
     )
 
-    # Notice that we `return_messages=True` to fit into the MessagesPlaceholder
-    # Notice that `"chat_history"` aligns with the MessagesPlaceholder name
-    # memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation = LLMChain(
         llm=llm,
         prompt=prompt,
         verbose=True,
-        # memory=memory
     )
 
-    # Notice that we just pass in the `question` variables - `chat_history` gets populated by memory
     result = conversation({"human": f"{message}"})['text']
     await ctx.send(discord.utils.escape_mentions(f"`Command used: /pyskagpt`\n**User Input**:\n{message}\n**Result: ** {result}\n"))
 
-# chatgpt (acts like normal chatgpt, except it is named pyskagpt!)
-# chatgpt (acts like normal chatgpt, except it is named pyskagpt!)
+
 # chatgpt (acts like normal chatgpt, except it is named pyskagpt!)
 
 @bot.command()
@@ -153,23 +141,16 @@ async def chatgpt(ctx, message):
             SystemMessagePromptTemplate.from_template(
                 "Your name is PyskaGPT, based on ChatGPT from OpenAi."
             ),
-            # The `variable_name` here is what must align with memory
-            # MessagesPlaceholder(variable_name="chat_history"),
             HumanMessagePromptTemplate.from_template("{human}")
         ]
     )
 
-    # Notice that we `return_messages=True` to fit into the MessagesPlaceholder
-    # Notice that `"chat_history"` aligns with the MessagesPlaceholder name
-    # memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation = LLMChain(
         llm=llm,
         prompt=prompt,
         verbose=True,
-        # memory=memory
     )
-
-    # Notice that we just pass in the `question` variables - `chat_history` gets populated by memory
+    
     result = conversation({"human": f"{message}"})['text']
     await ctx.send(discord.utils.escape_mentions(f"`Command used: /chatgpt`\n**User Input**:\n{message}\n**Result: ** {result}\n"))
 
@@ -319,4 +300,4 @@ NOTE : For Pyska-API to execute the moderation commands, Administrator permissio
 
 fr = '''FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR FR '''
 
-bot.run("insertyourownbottokenhere")
+bot.run(TOKEN)
