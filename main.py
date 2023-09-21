@@ -1,3 +1,4 @@
+# psyka
 import discord
 import openai
 from langchain.document_loaders.chatgpt import ChatGPTLoader
